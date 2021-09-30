@@ -8,7 +8,7 @@
 
 `Summary of the runs for the List-based algorithms:`
 
-`Run 1: ListSingle with a small input`
+#### Two outputs from running the `ListSingle` algorithm with different inputs
 
 ```
 🔬 Here's profiling data from computing an intersection with random data containers of 1000!
@@ -22,8 +22,6 @@ Program: intersection --number 1000 --maximum 25 --profile --approach ListSingle
 0.001 intersection  intersection\main.py:114
 └─ 0.001 compute_intersection_list_single  intersection\main.py:77
 ```
-
-`Run 2: ListSingle with a large input`
 
 ```
 🔬 Here's profiling data from computing an intersection with random data containers of 1000000!
@@ -42,7 +40,7 @@ Program: intersection --number 1000000 --maximum 25 --profile --approach ListSin
 └─ 0.029 [self]
 ```
 
-`Run 1: ListDouble with a small input`
+#### Two outputs from running the `ListDouble` algorithm with different inputs
 
 ```
 🔬 Here's profiling data from computing an intersection with random data containers of 1000!
@@ -62,8 +60,6 @@ Program: intersection --number 1000 --maximum 25 --profile --approach ListDouble
       [3 frames hidden]  pyinstrument
 ```
 
-`Run 2: ListDouble with a large input`
-
 ```
 🔬 Here's profiling data from computing an intersection with random data containers of 10000!
 
@@ -80,7 +76,7 @@ Program: intersection --number 10000 --maximum 25 --profile --approach ListDoubl
          [2 frames hidden]  <built-in>
 ```
 
-`Run 1: TupleSingle with a small input`
+#### Two outputs from running the `TupleSingle` algorithm with different inputs
 
 ```
 🔬 Here's profiling data from computing an intersection with random data containers of 1000!
@@ -95,8 +91,6 @@ Program: intersection --number 1000 --maximum 25 --profile --approach TupleSingl
 └─ 0.008 compute_intersection_tuple_single  intersection\main.py:103
 ```
 
-`Run 2: TupleSingle with a large input`
-
 ```
 🔬 Here's profiling data from computing an intersection with random data containers of 10000!
 
@@ -110,7 +104,7 @@ Program: intersection --number 10000 --maximum 25 --profile --approach TupleSing
 └─ 0.144 compute_intersection_tuple_single  intersection\main.py:103
 ```
 
-`Run 1: TupleDouble with a small input`
+#### Two outputs from running the `TupleDouble` algorithm with different inputs
 
 ```
 🔬 Here's profiling data from computing an intersection with random data containers of 1000!
@@ -125,39 +119,28 @@ Program: intersection --number 1000 --maximum 25 --profile --approach TupleDoubl
 └─ 5.095 compute_intersection_tuple_double  intersection\main.py:91
 ```
 
-`Run 2: TupleDouble with a large input`
+```
+🔬 Here's profiling data from computing an intersection with random data containers of 1500!
 
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 17:24:59  Samples:  1
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 30.206    CPU time: 29.484
+/   _/                      v4.0.3
+
+Program: intersection --number 1500 --maximum 25 --profile --approach TupleDouble
+
+30.216 intersection  intersection\main.py:114
+└─ 30.216 compute_intersection_tuple_double  intersection\main.py:91
 ```
 
-TODO: Whenever possible, please use the same "small" and "large" inputs for both
-the List-based and Tuple-based algorithms.
-
-TODO: Do not run the program with the `--display` option when conducting
-experiments!
-
-TODO: Document and justify your choice for the `number` and `maximum` variables.
-
-#### Two outputs from running the `ListSingle` algorithm with different inputs
-
-#### Two outputs from running the `ListDouble` algorithm with different inputs
-
-#### Two outputs from running the `TupleSingle` algorithm with different inputs
-
-#### Two outputs from running the `TupleDouble` algorithm with different inputs
+In this assignment I decided that the number in particular needed to be dependent on each individual input. What I mean by this is that the input number should depend on whether or not that function can run a number that large. For example, if I tried to run a number over 1500 for the TupleDouble approach then it would take a really long time for the program to complete it. However, if i ran 1000000 on the ListSingle approach it took less than 20 seconds to complete. So, in saying all of this I am justifying the use of these differing numbers for data collection because in order to collect data I needed to use numbers that were large or small enough for an output to be found based on the function command.
 
 ## Performance Analysis
 
-TODO: Provide three paragraphs that explain which algorithm is fastest, by how
-much it is faster, and how you knew that the it was faster, referencing the data
-in the aforementioned command outputs to support your response. You should make
-sure that you answer the following research questions:
+Throughout this project, I learned that an intersection is much much faster with a list. In class I chose to say that a Tuple would be faster but this was False. A tuple is much slower than a list in this instance because a tuple is immutable whereas a list is mutable. This essentially means that one cannot be changes whereas the other one can. A list is mutable and this means that it can be changed, but the significance of that with respect to this project is that when given the code for a tuple, there is a section in the code that says `result += something`, this is critically important because this line of code is actually telling the tuple, that it needs to rebuild itself with that new "something" added in. Lists are different because they DO NOT require that they be completely rebuilt in order to add new data to the list. A tuple, because it is immutable, requires that all of the data within the container be changed in order for it to change the data. That is why a list is faster. This is also further exacerbated by the fact that when a tuple is given a really large number it may have hundreds, if not thousands, of numbers that would need to be added to its container so it would need to take itself apart and rebuild hundreds of times before it could produce a suitable output. A list, however, will just adjust itself based on the new data given without rebuilding.
 
-- RQ: Is intersection faster with a list or a tuple?
-- RQ: Is intersection faster with a double-for-loop or a single-for-loop?
-- RQ: Overall, what is the fastest approach for computing the intersection?
+On a different note, the for loops and sometimes nested for loops within the function can also help to determine whether or not a function will be faster. When a function uses a nested double for loop, it has to iterate over everything and see if each aspect of the list meets the condition. However, when using an if statement, the condition that the two things on the seperate data holders are the same is already set before the computer starts iterating so the computer just has to look through the list and see if anything matches as opposed to iterating through everything and then deciding on a case by case basis if they match. So to conclude, this means that the for-if statements will be faster because they set a preexisting condition before the iteration starts.
 
-TODO: Make sure that your responses explain WHY certain algorithms are faster!
-TODO: It is not sufficient to only explain WHICH algorithm is faster!
+The fastest approach for computing overall is the ListSingle approach, not only is this approach able to handle things much faster, but it is also able to operate with much much larger numbers than any of the other functions. You will notice that in my data, the ListSingle approach is handling 1000000 whereas the others are only handling about 10000. Also, the data above shows that the ListSingle approach operates faster than the others even when handling a number this large. This is because this approach uses botht he for-if and List approaches that were spoken of in the above paragraphs.
 
 ## Source Code
 

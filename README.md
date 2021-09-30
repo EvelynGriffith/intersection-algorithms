@@ -11,7 +11,7 @@ After cloning this repository to your computer, please take the following steps:
 - Install the dependencies for the project by typing `poetry install`
 - Run the program in with both algorithms by typing:
   - `poetry run intersection --number 1000 --maximum 25 --profile --approach TupleSingle`
-  - `poetry run intersection --number 1000 --maximum 25 --profile --approach TupleDouble`
+  - `poetry run intersection --number 1500 --maximum 25 --profile --approach TupleDouble`
   - `poetry run intersection --number 1000 --maximum 25 --profile --approach ListSingle`
   - `poetry run intersection --number 1000 --maximum 25 --profile --approach ListDouble`
   - Please note that these are not the only configurations you should try for your experiment
