@@ -44,12 +44,21 @@ def generate_random_container(
     size: int, maximum: int, make_tuple: bool = False
 ) -> Union[List[int], Tuple[int, ...]]:
     """Generate a random list defined by the size and with no number bigger than maximum."""
-    # TODO: generate a list of random values
-    # TODO: the size of the list must be defined by the size parameter
-    # TODO: the contents of the list cannot have a number bigger than the number stored in maximum
-    # TODO: if the make_tuple parameter is True, then return a tuple instead of a list
-    # TODO: delete this placeholder return statement
-    return ()
+    # generate a list of random values
+    # the size of the list must be defined by the size parameter
+    # the contents of the list cannot have a number bigger than the number stored in maximum
+    random_container = size.generate_random_container(10, 100, False)
+    assert len(random_container) == 10
+    randomlist = []
+    for size in range(0, maximum):
+        n = random.randint(0, maximum)
+        randomlist.append(n)    
+    # if the make_tuple parameter is True, then return a tuple instead of a list
+    if make_tuple == True:
+        return True
+    else:
+        return False
+
 
 def compute_intersection_list_double(
     input_one: List[Any], input_two: List[Any]
