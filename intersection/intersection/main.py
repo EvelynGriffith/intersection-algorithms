@@ -47,17 +47,15 @@ def generate_random_container(
     # generate a list of random values
     # the size of the list must be defined by the size parameter
     # the contents of the list cannot have a number bigger than the number stored in maximum
-    random_container = generate_random_container(size, maximum, False)
-    assert len(random_container) == size
     randomlist = []
-    for size in range(0, maximum):
+    while len(randomlist) < size:
         n = random.randint(0, maximum)
-        randomlist.append(n)    
+        randomlist.append(n)
     # if the make_tuple parameter is True, then return a tuple instead of a list
-    if make_tuple == True:
-        return True
+    if make_tuple:
+        return tuple(randomlist)
     else:
-        return False
+        return randomlist
 
 
 def compute_intersection_list_double(
