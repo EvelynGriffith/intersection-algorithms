@@ -47,7 +47,7 @@ def generate_random_container(
     # generate a list of random values
     # the size of the list must be defined by the size parameter
     # the contents of the list cannot have a number bigger than the number stored in maximum
-    randomlist = []
+    randomlist = [int]
     while len(randomlist) < size:
         n = random.randint(0, maximum)
         randomlist.append(n)
