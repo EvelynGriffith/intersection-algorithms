@@ -98,11 +98,36 @@ Program: intersection --number 1000 --maximum 25 --profile --approach TupleSingl
 `Run 2: TupleSingle with a large input`
 
 ```
+🔬 Here's profiling data from computing an intersection with random data containers of 10000!
 
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 17:02:17  Samples:  1
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 0.139     CPU time: 0.141
+/   _/                      v4.0.3
 
-TODO: Summary of the runs for the ListDouble algorithm:
-Run 1: ListDouble with a small input
-Run 2: ListDouble with a large input
+Program: intersection --number 10000 --maximum 25 --profile --approach TupleSingle
+
+0.144 intersection  intersection\main.py:114
+└─ 0.144 compute_intersection_tuple_single  intersection\main.py:103
+```
+
+`Run 1: TupleDouble with a small input`
+
+```
+🔬 Here's profiling data from computing an intersection with random data containers of 1000!
+
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 17:05:17  Samples:  1
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 5.105     CPU time: 5.031
+/   _/                      v4.0.3
+
+Program: intersection --number 1000 --maximum 25 --profile --approach TupleDouble
+
+5.095 intersection  intersection\main.py:114
+└─ 5.095 compute_intersection_tuple_double  intersection\main.py:91
+```
+
+`Run 2: TupleDouble with a large input`
+
+```
 
 TODO: Whenever possible, please use the same "small" and "large" inputs for both
 the List-based and Tuple-based algorithms.
