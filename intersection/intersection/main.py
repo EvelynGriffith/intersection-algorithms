@@ -67,12 +67,12 @@ def compute_intersection_list_double(
     # implement this function in a manner
     # that follows the compute_intersection_tuple_double
     result: List[Any, ...] = ()
+    # this function must use a double for loop
     for x in input_one:
         for y in input_two:
             if x == y:
                 result += (y,)
     return result
-    # this function must use a double for loop
 
 
 
@@ -80,9 +80,14 @@ def compute_intersection_list_single(
     input_one: List[Any], input_two: List[Any]
 ) -> List[Any]:
     """Compute the intersection of two provided lists."""
-    # TODO: implement this function in a manner
+    # implement this function in a manner
     # that follows the compute_intersection_tuple_single
-    # TODO: this function must use a single for loop and an if statement
+    result: List[Any, ...] = []
+    for element in input_one:
+        if element in input_two:
+            result += (element,)
+    return result
+    # this function must use a single for loop and an if statement
     # TODO: delete this placeholder return statement
     return []
 
