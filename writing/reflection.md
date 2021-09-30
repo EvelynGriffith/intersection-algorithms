@@ -1,26 +1,104 @@
 # Intersection Algorithms
 
-## Add Your Name Here
+## Evelyn Griffith
 
 ## Program Output
 
 ### Use eight fenced code blocks to provide output from eight different runs of `intersection` with different inputs
 
-TODO: Summary of the runs for the List-based algorithms:
+`Summary of the runs for the List-based algorithms:`
 
-TODO: Summary of the runs for the ListSingle algorithm:
-Run 1: ListSingle with a small input
-Run 2: ListSingle with a large input
+`Run 1: ListSingle with a small input`
 
-TODO: Summary of the runs for the ListDouble algorithm:
-Run 1: ListDouble with a small input
-Run 2: ListDouble with a large input
+```
+🔬 Here's profiling data from computing an intersection with random data containers of 1000!
 
-TODO: Summary of the runs for the Tuple-based algorithms:
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 16:23:52  Samples:  1
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 0.000     CPU time: 0.000
+/   _/                      v4.0.3
 
-TODO: Summary of the runs for the TupleSingle algorithm:
-Run 1: TupleSingle with a small input
-Run 2: TupleSingle with a large input
+Program: intersection --number 1000 --maximum 25 --profile --approach ListSingle
+
+0.001 intersection  intersection\main.py:114
+└─ 0.001 compute_intersection_list_single  intersection\main.py:77
+```
+
+`Run 2: ListSingle with a large input`
+
+```
+🔬 Here's profiling data from computing an intersection with random data containers of 1000000!
+
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 16:35:13  Samples:  1698
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 1.826     CPU time: 1.750
+/   _/                      v4.0.3
+
+Program: intersection --number 1000000 --maximum 25 --profile --approach ListSingle
+
+1.828 intersection  intersection\main.py:114
+├─ 1.800 compute_intersection_list_single  intersection\main.py:77
+│  ├─ 1.504 [self]
+│  └─ 0.296 list.append  <built-in>:0
+│        [2 frames hidden]  <built-in>
+└─ 0.029 [self]
+```
+
+`Run 1: ListDouble with a small input`
+
+```
+🔬 Here's profiling data from computing an intersection with random data containers of 1000!
+
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 16:37:15  Samples:  73
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 0.081     CPU time: 0.078
+/   _/                      v4.0.3
+
+Program: intersection --number 1000 --maximum 25 --profile --approach ListDouble
+
+0.073 intersection  intersection\main.py:114
+├─ 0.072 compute_intersection_list_double  intersection\main.py:61
+│  ├─ 0.068 [self]
+│  └─ 0.004 list.append  <built-in>:0
+│        [2 frames hidden]  <built-in>
+└─ 0.001 stop  pyinstrument\profiler.py:136
+      [3 frames hidden]  pyinstrument
+```
+
+`Run 2: ListDouble with a large input`
+
+```
+🔬 Here's profiling data from computing an intersection with random data containers of 10000!
+
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 16:47:43  Samples:  8973
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 9.321     CPU time: 8.969
+/   _/                      v4.0.3
+
+Program: intersection --number 10000 --maximum 25 --profile --approach ListDouble
+
+9.311 intersection  intersection\main.py:114
+└─ 9.311 compute_intersection_list_double  intersection\main.py:61
+   ├─ 8.495 [self]
+   └─ 0.816 list.append  <built-in>:0
+         [2 frames hidden]  <built-in>
+```
+
+`Run 1: TupleSingle with a small input`
+
+```
+🔬 Here's profiling data from computing an intersection with random data containers of 1000!
+
+  _     ._   __/__   _ _  _  _ _/_   Recorded: 16:50:32  Samples:  1
+ /_//_/// /_\ / //_// / //_'/ //     Duration: 0.010     CPU time: 0.016
+/   _/                      v4.0.3
+
+Program: intersection --number 1000 --maximum 25 --profile --approach TupleSingle
+
+0.008 intersection  intersection\main.py:114
+└─ 0.008 compute_intersection_tuple_single  intersection\main.py:103
+```
+
+`Run 2: TupleSingle with a large input`
+
+```
+
 
 TODO: Summary of the runs for the ListDouble algorithm:
 Run 1: ListDouble with a small input
