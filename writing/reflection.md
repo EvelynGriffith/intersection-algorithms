@@ -148,8 +148,17 @@ The fastest approach for computing overall is the ListSingle approach, not only 
 
 #### A class that defines the four algorithmic options for running the experiment
 
-TODO: Use a fenced code block to provide the requested source code
-TODO: Write at least one paragraph to explain the request source code
+```
+class IntersectionApproach(str, Enum):
+    """Define the name for the approach for performing intersection of structured types."""
+
+    list_single = "ListSingle"
+    tuple_single = "TupleSingle"
+    list_double = "ListDouble"
+    tuple_double = "TupleDouble"
+```
+
+What this source code does is it defines the approach names for the different structured types. This means that it will give us the different names that we can use to specify which function we are trying to run a number with.
 
 #### A function signature that defines the command-line interface for `intersection`
 
