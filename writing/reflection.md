@@ -295,8 +295,8 @@ This code helps to generate a random container for the data that will be used in
 
 ### What was the greatest challenge that you faced when completing this assignment?
 
-TODO: Provide a one-paragraph response that answers this question in your own words.
+The biggest challenge I faced with completing this assignment was figuring out how to wite code for the generation of a container in the function "generate_random_container". The biggest part of that I tend to overcomplicate writing code and instead of seeing what's there I tend to think that adding more lines will fix what I already have. I also started out with a for loop which could have worked but as you can see in my code, I ended up using a while loop because it ended up making more sense to me. I also struggled with the return statements because I kept getting confused about the return of a tuple and i didnt realize it would be so easy as just saying "tuple" before the variable I wanted to return.
 
 ### Leveraging your response to the previous question, how did you overcome the challenge?
 
-TODO: Provide a one-paragraph response that answers this question in your own words.
+Well mostly I figured this out through a lot of trial and error. I started by importing code that I knew was close to what I was trying to achieve and I worked from there to make it specific to my own needs. I also asked a TL for help a one point which helped me to iron out my issues after I had writted a good chunk of code. Another issue was that I misinterpreted what the poetry test error was asking me to fix in my code and that lead me to add some code that wasnt necessary. The TL that I worked with helped me to identify that and then the rest because easier to handle afterward. Overall, I am proud of this assignment because I went a lot farther without asking for help than I have in prevoious assignments and I think that means I'm making a lot of progress!
