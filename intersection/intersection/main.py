@@ -47,8 +47,8 @@ def generate_random_container(
     # generate a list of random values
     # the size of the list must be defined by the size parameter
     # the contents of the list cannot have a number bigger than the number stored in maximum
-    random_container = size.generate_random_container(10, 100, False)
-    assert len(random_container) == 10
+    random_container = generate_random_container(size, maximum, False)
+    assert len(random_container) == size
     randomlist = []
     for size in range(0, maximum):
         n = random.randint(0, maximum)
@@ -64,11 +64,16 @@ def compute_intersection_list_double(
     input_one: List[Any], input_two: List[Any]
 ) -> List[Any]:
     """Compute the intersection of two provided lists."""
-    # TODO: implement this function in a manner
+    # implement this function in a manner
     # that follows the compute_intersection_tuple_double
-    # TODO: this function must use a double for loop
-    # TODO: delete this placeholder return statement
-    return []
+    result: List[Any, ...] = ()
+    for x in input_one:
+        for y in input_two:
+            if x == y:
+                result += (y,)
+    return result
+    # this function must use a double for loop
+
 
 
 def compute_intersection_list_single(
