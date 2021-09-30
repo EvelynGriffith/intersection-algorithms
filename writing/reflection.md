@@ -162,15 +162,136 @@ What this source code does is it defines the approach names for the different st
 
 #### A function signature that defines the command-line interface for `intersection`
 
-TODO: Use a fenced code block to provide the requested source code
-TODO: Write at least one paragraph to explain the request source code
-TODO: Explain each of the command-line arguments for this program
+```
+@cli.command()
+def intersection(
+    number: int = typer.Option(5),
+    maximum: int = typer.Option(25),
+    profile: bool = typer.Option(False),
+    display: bool = typer.Option(False),
+    approach: IntersectionApproach = IntersectionApproach.tuple_single,
+) -> None:
+    """Compute the intersection of data containers."""
+    # create a console for rich text output
+    console = Console()
+    # create the starting data containers with no contents
+    input_one = None
+    input_two = None
+    # create a starting output variable for the intersection computation
+    intersection_output: Union[List[Any], Tuple[Any, ...]]
+    # TupleSingle: the intersection algorithm that works on an input list
+    if approach.value == IntersectionApproach.tuple_single:
+        # generate the two inputs consisting of random values
+        input_one = generate_random_container(number, maximum, make_tuple=True)
+        input_two = generate_random_container(number, maximum, make_tuple=True)
+        # perform profiling on the execution of the intersection algorithm
+        if profile:
+            profiler.start()
+            intersection_output = compute_intersection_tuple_single(
+                tuple(input_one), tuple(input_two)
+            )
+            profiler.stop()
+        # do not perform profiling on the intersection algorithm
+        else:
+            intersection_output = compute_intersection_tuple_single(
+                tuple(input_one), tuple(input_two)
+            )
+    # TupleDouble: use the intersection algorithm that works on an input tuple
+    elif approach.value == IntersectionApproach.tuple_double:
+        # generate the two tuples of random values
+        input_one = generate_random_container(number, maximum, make_tuple=True)
+        input_two = generate_random_container(number, maximum, make_tuple=True)
+        # perform profiling on the execution of the intersection algorithm
+        if profile:
+            profiler.start()
+            intersection_output = compute_intersection_tuple_double(
+                tuple(input_one), tuple(input_two)
+            )
+            profiler.stop()
+        # do not perform profiling on the intersection algorithm
+        else:
+            intersection_output = compute_intersection_tuple_double(
+                tuple(input_one), tuple(input_two)
+            )
+    # ListSingle: the intersection algorithm that works on an input list
+    elif approach.value == IntersectionApproach.list_single:
+        # generate the two inputs consisting of random values
+        input_one = generate_random_container(number, maximum, make_tuple=False)
+        input_two = generate_random_container(number, maximum, make_tuple=False)
+        # perform profiling on the execution of the intersection algorithm
+        if profile:
+            profiler.start()
+            intersection_output = compute_intersection_list_single(
+                list(input_one), list(input_two)
+            )
+            profiler.stop()
+        # do not perform profiling on the intersection algorithm
+        else:
+            intersection_output = compute_intersection_list_single(
+                list(input_one), list(input_two)
+            )
+    # ListDouble: use the intersection algorithm that works on an input list
+    elif approach.value == IntersectionApproach.list_double:
+        # generate the two inputs consisting of random values
+        input_one = generate_random_container(number, maximum, make_tuple=False)
+        input_two = generate_random_container(number, maximum, make_tuple=False)
+        # perform profiling on the execution of the intersection algorithm
+        if profile:
+            profiler.start()
+            intersection_output = compute_intersection_list_double(
+                list(input_one), list(input_two)
+            )
+            profiler.stop()
+        # do not perform profiling on the intersection algorithm
+        else:
+            intersection_output = compute_intersection_list_double(
+                list(input_one), list(input_two)
+            )
+    # display the input sets and the result of running the computation
+    if display:
+        console.print(
+            ":sparkles: Here are the details about the intersection computation!"
+        )
+        console.print()
+        console.print("Performed intersection with:")
+        console.print(f"---> the first data container: {input_one}")
+        console.print(f"---> the second data container: {input_two}")
+        console.print(
+            f"Computed the intersection as the data container: {intersection_output}"
+        )
+    # display the results of the profiling if that option was requested
+    if profile:
+        console.print()
+        console.print(
+            f":microscope: Here's profiling data from computing an intersection with random data containers of {number}!"
+        )
+        profiler.print()
+```
+
+This code is the command function. Essentially, this means that this function is going to call upon other functions as they are assigned by the user to complete a task. When the function says: `if approach.value == IntersectionApproach.tuple_single` that means that the function is telling the computer to use the "tuple_single" variable which, if we go back to the class definition means that we will be using the TupleSingle approach function. This function is basically a big organizer of all of the other functions. It will take the user input and decide which function needs to be used based on that input. Just as I explained with the previous line of code, there is another corresponding line of code for each of the class definitions. This means that the function will direct the input of the user to the correct function and facilitate its running.
 
 #### A function that can generate a data container with random values in it
 
-TODO: Use a fenced code block to provide the requested source code
-TODO: Write at least one paragraph to explain the request source code
-TODO: Explain each line of source code in this function
+```
+def generate_random_container(
+    size: int, maximum: int, make_tuple: bool = False
+) -> Union[List[int], Tuple[int, ...]]:
+    """Generate a random list defined by the size and with no number bigger than maximum."""
+    # generate a list of random values
+    # the size of the list must be defined by the size parameter
+    # the contents of the list cannot have a number bigger than the number stored in maximum
+    randomlist = []
+    while len(randomlist) < size:
+        n = random.randint(0, maximum)
+        randomlist.append(n)
+    # if the make_tuple parameter is True, then return a tuple instead of a list
+    if make_tuple:
+        return tuple(randomlist)
+    else:
+        return randomlist
+```
+
+This code helps to generate a random container for the data that will be used in the experiment. The first line is the function definition and it is used to not only define and name the function as "generate_random_container", but it also defines a couple of variables the first being: size, which is defined as an integer, maximum, which is defined as an int, and make_tuple, which is a boolean. The next lines of code are what actually generate the container as a random list. The line that says `randomlist = []` is creating an empty list called randomlist. The following code is while loop that sets the size of the list through the already determined variable called "size". The following line `n = random.randint(0, maximum)` sets a new variable called "n" and uses it to generate random integers using the .randint() command. Then it sets the range that those random integers can be made within as between zero and the already predetermined variable called "maximum". From there the code appends the randomlist and returns said list through the subsequent if statement. The if statement says that if the variable make_tuple is true then return the randomlist as a tuple if not return randomlist as an integer.
 
 ### What was the greatest challenge that you faced when completing this assignment?
 
